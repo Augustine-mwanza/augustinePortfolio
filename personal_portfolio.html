@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augustine Mwanza Pius - Portfolio</title>
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        amber: {
+                            700: '#b45309',
+                            800: '#92400e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500" rel="stylesheet">
+    <style>
+        .wood-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .light-wood-pattern {
+            background-color: skyblue;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .profile-photo-frame {
+            width: clamp(4.5rem, 24vw, 5rem);
+            height: clamp(4.5rem, 24vw, 5rem);
+        }
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-[skyblue] text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
+
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="flex items-center space-x-2 font-bold text-xl text-brand-600 dark:text-brand-500">
+                    <span class="p-2 bg-brand-500/10 rounded-lg"><i class="fa-solid font-mono text-lg">&lt;AMP/&gt;</i></span>
+                    <span class="tracking-tight text-slate-900 dark:text-white">A. M. Pius</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Projects</a>
+                    <a href="#experience" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Experience</a>
+                    <a href="#contact" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
+                    
+                    <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">
+                        <i id="themeIcon" class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <a href="#contact" class="px-4 py-2 text-sm font-medium text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-colors shadow-md shadow-brand-500/20">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden items-center space-x-3">
+                    <button id="themeToggleMobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        <i id="themeIconMobile" class="fa-solid fa-moon"></i>
+                    </button>
+                    <button id="menuBtn" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block py-2 text-base font-medium hover:text-brand-600 dark:hover:text-brand-500">About</a>
+            <a href="#skills" class="block py-2 text-base font-medium hover:text-brand-600 dark:hover:text-brand-500">Skills</a>
+            <a href="#projects" class="block py-2 text-base font-medium hover:text-brand-600 dark:hover:text-brand-500">Projects</a>
+            <a href="#experience" class="block py-2 text-base font-medium hover:text-brand-600 dark:hover:text-brand-500">Experience</a>
+            <a href="#contact" class="block py-2 text-base font-medium hover:text-brand-600 dark:hover:text-brand-500">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden light-wood-pattern dark:wood-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-600 dark:text-brand-400 text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        Applied Mathematician & Craftsman
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                        Augustine <br class="hidden sm:inline" />
+                        <span class="bg-gradient-to-r from-brand-600 to-amber-600 bg-clip-text text-transparent">Mwanza Pius</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-800 dark:text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Bridging mathematical modeling, software engineering, and precision woodworking craftsmanship to solve complex problems and build functional artifacts.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#projects" class="px-6 py-3 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-medium shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <span>Explore Projects</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <button onclick="viewCV()" class="px-6 py-3 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-medium transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-eye text-sm"></i>
+                            <span>View CV</span>
+                        </button>
+                        <button onclick="downloadCV()" class="px-6 py-3 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-medium transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-download text-sm"></i>
+                            <span>Download CV</span>
+                        </button>
+                    </div>
+
+                    <div class="pt-6 flex items-center justify-center lg:justify-start space-x-6 text-slate-700 dark:text-slate-400">
+                        <a href="https://github.com/Augustine-mwanza" target="_blank" rel="noopener noreferrer" aria-label="Augustine Mwanza on GitHub" class="hover:text-brand-500 transition-colors text-xl"><i class="fa-brands fa-github"></i></a>
+                        <span aria-label="LinkedIn profile not provided" title="LinkedIn profile coming soon" class="text-xl opacity-50 cursor-not-allowed"><i class="fa-brands fa-linkedin"></i></span>
+                        <a href="mailto:augustinemwanza86@gmail.com" class="hover:text-brand-500 transition-colors text-xl"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-[min(18rem,calc(100vw-2rem))] aspect-square rounded-2xl bg-gradient-to-tr from-brand-500 to-amber-500 p-1 shadow-2xl">
+                        <div class="w-full h-full bg-slate-900 rounded-xl overflow-hidden relative flex flex-col justify-between p-6">
+                            <div class="flex justify-between items-start">
+                                <span class="font-mono text-xs text-brand-400">MATH // CODE // WOOD</span>
+                                <i class="fa-solid fa-compass-drafting text-amber-500 text-2xl"></i>
+                            </div>
+                            
+                            <div class="space-y-4 my-auto text-center py-4">
+                                <div class="profile-photo-frame mx-auto rounded-full bg-slate-800 border-2 border-brand-500/50 overflow-hidden flex items-center justify-center">
+                                    <img src="profile.jpg" alt="Portrait of Augustine Mwanza" class="profile-photo">
+                                </div>
+                                <h3 class="text-white font-semibold text-lg">Augustine Mwanza</h3>
+                                <p class="text-xs text-slate-400">DeKUT Math & Modeling Scholar</p>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800 text-center text-xs">
+                                <div>
+                                    <p class="text-slate-400">Focus</p>
+                                    <p class="font-semibold text-white">Modeling</p>
+                                </div>
+                                <div>
+                                    <p class="text-slate-400">Code</p>
+                                    <p class="font-semibold text-white">Python</p>
+                                </div>
+                                <div>
+                                    <p class="text-slate-400">Craft</p>
+                                    <p class="font-semibold text-white">Joinery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold tracking-wider text-brand-600 dark:text-brand-400 uppercase mb-2">About Me</h2>
+                <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Analytical Rigor Meets Tactile Craftsmanship</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p>
+                        I am currently pursuing a <strong class="text-slate-900 dark:text-white">Bachelor of Science in Mathematics and Modelling Processes</strong> at <strong class="text-slate-900 dark:text-white">Dedan Kimathi University of Technology</strong> (2024–Present).
+                    </p>
+                    <p>
+                        My background unique bridges abstract mathematical theory, computational software development, and practical joinery. I apply differential equations and computer vision concepts alongside physical wood craftsmanship to create real-world solutions.
+                    </p>
+                    <p>
+                        Whether simulating complex physical processes using Python algorithms or crafting custom furniture at Timber World Limited, I bring attention to structural integrity, precision geometry, and optimized layout planning.
+                    </p>
+
+                    <div class="pt-4 grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50">
+                            <i class="fa-solid fa-graduation-cap text-brand-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-slate-900 dark:text-white">Education</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">BSc Mathematics & Modelling Processes</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50">
+                            <i class="fa-solid fa-hammer text-amber-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-slate-900 dark:text-white">Experience</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Joiner at Timber World Ltd</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-6 rounded-2xl bg-brand-500/5 border border-brand-500/10 space-y-2">
+                        <div class="text-3xl font-extrabold text-brand-600 dark:text-brand-400">100%</div>
+                        <h4 class="font-semibold text-slate-900 dark:text-white">Precision Mindset</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Applying mathematical rigor to physical and virtual engineering.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-amber-500/5 border border-amber-500/10 space-y-2">
+                        <div class="text-3xl font-extrabold text-amber-600 dark:text-amber-400">Joinery</div>
+                        <h4 class="font-semibold text-slate-900 dark:text-white">Custom Craftsmanship</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Hands-on woodwork, space measurement, and bespoke layout execution.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 space-y-2">
+                        <div class="text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">Python</div>
+                        <h4 class="font-semibold text-slate-900 dark:text-white">Data & Computer Vision</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">NumPy, OpenCV, and mathematical modeling notebooks.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-purple-500/5 border border-purple-500/10 space-y-2">
+                        <div class="text-3xl font-extrabold text-purple-600 dark:text-purple-400">Analysis</div>
+                        <h4 class="font-semibold text-slate-900 dark:text-white">Quantitative Problem Solving</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Differential equations, numerical calculations, and trading analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold tracking-wider text-brand-600 dark:text-brand-400 uppercase mb-2">Capabilities</h2>
+                <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Technical & Practical Skillsets</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Skill Card 1 -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl font-bold mb-6">
+                        <i class="fa-solid fa-square-root-variable"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Mathematics & Analytics</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-brand-500 text-xs"></i>
+                            <span>Ordinary Differential Equations (ODEs)</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-brand-500 text-xs"></i>
+                            <span>Vector Calculus & Real/Complex Analysis</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-brand-500 text-xs"></i>
+                            <span>Numerical Methods & Modeling</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-brand-500 text-xs"></i>
+                            <span>Quantitative & Statistical Analysis</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-bold mb-6">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Programming & Software</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+                            <span>Python & Jupyter Notebooks</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+                            <span>OpenCV & Image Processing</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+                            <span>HTML5, CSS3, & Modern UI Layouts</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+                            <span>VS Code, Git, & Version Control</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl font-bold mb-6">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Craftsmanship & Design</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-amber-500 text-xs"></i>
+                            <span>Joinery & Carpentry Mechanics</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-amber-500 text-xs"></i>
+                            <span>Custom Furniture Design & Framing</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-amber-500 text-xs"></i>
+                            <span>CNC Applications & CAD Layouts</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check text-amber-500 text-xs"></i>
+                            <span>Space Measurement & Layout Optimization</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-white dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-mono font-semibold tracking-wider text-brand-600 dark:text-brand-400 uppercase mb-2">Portfolio</h2>
+                <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Featured Work & Projects</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button onclick="filterProjects('all')" class="filter-btn active px-4 py-2 rounded-full text-sm font-medium transition-colors bg-brand-600 text-white" data-category="all">All Projects</button>
+                <button onclick="filterProjects('math')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-category="math">Math & Modeling</button>
+                <button onclick="filterProjects('woodwork')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-category="woodwork">Joinery & Woodwork</button>
+                <button onclick="filterProjects('vision')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-category="vision">Computer Vision & Software</button>
+                <button onclick="filterProjects('creative')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-category="creative">Creative Work</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsGrid">
+                
+                <!-- Project Card 1 -->
+                <div class="project-card border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-800/40 hover:shadow-lg transition-all" data-category="math">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-brand-500/10 text-brand-600 dark:text-brand-400">Math & Modeling</span>
+                            <i class="fa-solid fa-chart-line text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Mathematical & Numerical Modeling Suite</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">
+                            Python and Jupyter notebook scripts analyzing differential equations, population dynamics, and numerical approximations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Python</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Jupyter</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">NumPy</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Pandas</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Matplotlib</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">SciPy</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">SymPy</span>
+                        </div>
+                        <button onclick="openModal('proj1')" class="text-sm font-medium text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-1">
+                            <span>View Details</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-800/40 hover:shadow-lg transition-all" data-category="math">
+                    <img src="number-representation-project.png" alt="Number Representation in Computers Jupyter notebook" class="project-image w-full h-56 object-contain bg-slate-100 dark:bg-slate-900 cursor-zoom-in" onclick="openImagePreview(this.src, this.alt)" role="button" tabindex="0" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openImagePreview(this.src, this.alt); }">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-brand-500/10 text-brand-600 dark:text-brand-400">Math & Computing</span>
+                            <i class="fa-solid fa-microchip text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Number Representation in Computers</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">
+                            A Jupyter notebook exploring how integers are represented using fixed-width binary formats, including unsigned and signed two's-complement values.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Python</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Jupyter</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Computer Science</span>
+                        </div>
+                        <button onclick="openModal('proj6')" class="text-sm font-medium text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-1">
+                            <span>View Details</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-800/40 hover:shadow-lg transition-all" data-category="woodwork">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400">Joinery & Space</span>
+                            <i class="fa-solid fa-border-all text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Space Planning & Furniture Layout Visualizer</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">
+                            Interactive grid tool for calculating material requirements, board cutting optimizations, and spatial furniture fitting.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">HTML5/JS</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Geometry</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Optimization</span>
+                        </div>
+                        <button onclick="openModal('proj2')" class="text-sm font-medium text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-1">
+                            <span>View Details</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-800/40 hover:shadow-lg transition-all" data-category="woodwork">
+                    <img src="crafting-cabinet.jpg" alt="Custom white cabinet crafted by Augustine Mwanza" class="project-image w-full h-56 object-contain bg-slate-100 dark:bg-slate-900 cursor-zoom-in" onclick="openImagePreview(this.src, this.alt)" role="button" tabindex="0" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openImagePreview(this.src, this.alt); }">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400">Craftsmanship</span>
+                            <i class="fa-solid fa-couch text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Custom Furniture & Woodworking Showcase</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">
+                            Precision joinery projects engineered for custom residential and commercial interiors at Timber World Limited.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Joinery</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Furniture Design</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Measurements</span>
+                        </div>
+                        <button onclick="openModal('proj3')" class="text-sm font-medium text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-1">
+                            <span>View Details</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="project-card border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-800/40 hover:shadow-lg transition-all" data-category="vision">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Computer Vision</span>
+                            <i class="fa-solid fa-eye text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Image Processing & Vision Analysis Tools</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">
+                            OpenCV Python scripts designed for edge detection, shape feature extraction, and automated surface defect analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Python</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">OpenCV</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Feature Analysis</span>
+                        </div>
+                        <button onclick="openModal('proj4')" class="text-sm font-medium text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-1">
+                            <span>View Details</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 -->
+                <div class="project-card border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-800/40 hover:shadow-lg transition-all" data-category="creative">
+                    <img src="profile-project.jpg" alt="Professional profile portrait project" class="project-image w-full h-56 object-contain bg-slate-100 dark:bg-slate-900 cursor-zoom-in" onclick="openImagePreview(this.src, this.alt)" role="button" tabindex="0" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openImagePreview(this.src, this.alt); }">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-purple-500/10 text-purple-600 dark:text-purple-400">Creative Work</span>
+                            <i class="fa-solid fa-camera text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Professional Profile Portrait</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">
+                            A personal branding portrait created to present a clear and professional visual identity across portfolio and career materials.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Photography</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Branding</span>
+                        </div>
+                        <button onclick="openModal('proj5')" class="text-sm font-medium text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-1">
+                            <span>View Details</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold tracking-wider text-brand-600 dark:text-brand-400 uppercase mb-2">Background</h2>
+                <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Education & Experience</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Education Timeline -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-brand-500"></i>
+                        <span>Education</span>
+                    </h3>
+
+                    <div class="border-l-2 border-slate-200 dark:border-slate-800 pl-6 space-y-8">
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-brand-500 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="text-xs font-mono text-brand-600 dark:text-brand-400 font-semibold">2024 - PRESENT</div>
+                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-1">BSc in Mathematics and Modelling Processes</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Dedan Kimathi University of Technology (DeKUT)</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Core study in ODEs, numerical analysis, complex modeling algorithms, and computational methods.</p>
+                        </div>
+
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="text-xs font-mono text-slate-500 dark:text-slate-400 font-semibold">SECONDARY EDUCATION</div>
+                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-1">Kenya Certificate of Secondary Education</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">AIC Kyome Boys & St. Paul's Gathuki-ini Boys</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Strong foundational focus on mathematics, physical sciences, and technical studies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Experience & Activities -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase text-amber-500"></i>
+                        <span>Practical Experience & Activities</span>
+                    </h3>
+
+                    <div class="border-l-2 border-slate-200 dark:border-slate-800 pl-6 space-y-8">
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-amber-500 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold">WORK EXPERIENCE</div>
+                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-1">Carpenter & Joiner</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Timber World Limited, Nairobi</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Execution of custom wood joinery, spatial site layout assessments, furniture assembly, and precision cutting.</p>
+                        </div>
+
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-emerald-500 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold">INTERESTS & PASSIONS</div>
+                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-1">Activities & Hobbies</h4>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                                    <i class="fa-solid fa-futbol mr-1 text-emerald-500"></i> Football
+                                </span>
+                                <span class="px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                                    <i class="fa-solid fa-person-hiking mr-1 text-emerald-500"></i> Hiking
+                                </span>
+                                <span class="px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                                    <i class="fa-solid fa-chart-line mr-1 text-emerald-500"></i> Quantitative Analysis & Trading
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="text-xs font-mono font-semibold tracking-wider text-brand-600 dark:text-brand-400 uppercase">Contact</h2>
+                    <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Let's Connect</p>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Interested in mathematical modeling collaboration, software developments, or custom joinery consultation? Feel free to drop a message.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Direct Email</p>
+                                <a href="mailto:augustinemwanza86@gmail.com" class="text-sm font-semibold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400">augustinemwanza86@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">WhatsApp</p>
+                                <a href="https://wa.me/254712051504" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400">0712051504</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Location</p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">Nyeri / Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="contactName" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+                                <input id="contactName" name="name" type="text" required autocomplete="name" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 outline-none transition-all" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="contactEmail" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                                <input id="contactEmail" name="email" type="email" required autocomplete="email" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 outline-none transition-all" placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="contactPhone" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Phone <span class="text-slate-400">(optional)</span></label>
+                            <input id="contactPhone" name="phone" type="tel" autocomplete="tel" pattern="[0-9+() -]{7,20}" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 outline-none transition-all" placeholder="+254 712 051 504">
+                        </div>
+
+                        <div>
+                            <label for="contactSubject" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Subject</label>
+                            <input id="contactSubject" name="subject" type="text" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 outline-none transition-all" placeholder="Project Inquiry / Consultation">
+                        </div>
+
+                        <div>
+                            <label for="contactMessage" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                            <textarea id="contactMessage" name="message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 outline-none transition-all" placeholder="Write your message here..."></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button type="submit" class="w-full py-3 px-6 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-md transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-sm"></i>
+                                <span>Send via WhatsApp</span>
+                            </button>
+                            <button type="button" onclick="sendViaEmail()" class="w-full py-3 px-6 rounded-lg border border-brand-600 text-brand-700 dark:text-brand-400 hover:bg-brand-500/10 font-medium transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-envelope text-sm"></i>
+                                <span>Send via Email</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="formSuccess" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm text-center">
+                        Your selected messaging app is opening with your message ready to send.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Augustine Mwanza Pius. All rights reserved.</p>
+            <p class="font-mono">Built with HTML5, Tailwind CSS & JavaScript</p>
+        </div>
+    </footer>
+
+    <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div id="imagePreviewModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm" onclick="closeImagePreview()">
+        <button type="button" class="absolute top-4 right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-2xl text-white hover:bg-white/20" aria-label="Close image preview" onclick="closeImagePreview()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="imagePreview" src="" alt="" class="max-w-[95vw] max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+    </div>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeToggleMobileBtn = document.getElementById('themeToggleMobile');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeIconMobile = document.getElementById('themeIconMobile');
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                themeIcon.className = 'fa-solid fa-moon';
+                themeIconMobile.className = 'fa-solid fa-moon';
+            } else {
+                document.documentElement.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-sun';
+                themeIconMobile.className = 'fa-solid fa-sun';
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleDarkMode);
+        themeToggleMobileBtn.addEventListener('click', toggleDarkMode);
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Project Filters
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                if(btn.getAttribute('data-category') === category) {
+                    btn.classList.add('bg-brand-600', 'text-white');
+                    btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                } else {
+                    btn.classList.remove('bg-brand-600', 'text-white');
+                    btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Project Modals Detail
+        const projectData = {
+            proj1: {
+                title: "Mathematical & Numerical Modeling Suite",
+                category: "Mathematics",
+                desc: "A comprehensive repository of computational mathematics notebooks. It implements Runge-Kutta numerical methods for differential equations, linear algebra algorithms, and data visualization tools for engineering applications.",
+                tags: ["Python", "Jupyter", "NumPy", "Pandas", "Matplotlib", "SciPy", "SymPy"]
+            },
+            proj6: {
+                title: "Number Representation in Computers",
+                category: "Math & Computing",
+                desc: "A Jupyter notebook explaining fixed-width integer representation, unsigned integer ranges, and signed two's-complement values across common bit widths.",
+                tags: ["Python", "Jupyter", "Binary", "Computer Science"]
+            },
+            proj2: {
+                title: "Space Planning & Furniture Layout Visualizer",
+                category: "Optimization",
+                desc: "An algorithmic planning prototype designed to streamline wood sheet usage during furniture manufacturing. Reduces timber waste by calculating optimal cutting diagrams and layout spacing.",
+                tags: ["JavaScript", "HTML5", "Geometry", "Algorithmic Layout"]
+            },
+            proj3: {
+                title: "Custom Furniture & Woodworking Showcase",
+                category: "Craftsmanship",
+                desc: "Hands-on projects completed at Timber World Limited in Nairobi. Includes modular cabinetry, interlocking timber joinery, and custom office desks built using high-precision specs.",
+                tags: ["Joinery", "Woodworking", "Furniture CAD", "Carpentry"]
+            },
+            proj4: {
+                title: "Image Processing & Vision Analysis Tools",
+                category: "Computer Vision",
+                desc: "A collection of OpenCV scripts for detecting surface anomalies, measuring wood grain orientations, and performing mathematical feature extraction on physical timber samples.",
+                tags: ["Python", "OpenCV", "Image Processing", "Feature Detection"]
+            },
+            proj5: {
+                title: "Professional Profile Portrait",
+                category: "Creative Work",
+                desc: "A personal branding portrait created to present a clear and professional visual identity across portfolio and career materials.",
+                tags: ["Photography", "Branding"]
+            }
+        };
+
+        function openModal(id) {
+            const data = projectData[id];
+            const modalContent = document.getElementById('modalContent');
+            
+            modalContent.innerHTML = `
+                <span class="text-xs font-mono font-semibold text-brand-600 dark:text-brand-400 uppercase">${data.category}</span>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1 mb-3">${data.title}</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">${data.desc}</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    ${data.tags.map(tag => `<span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">${tag}</span>`).join('')}
+                </div>
+                <button onclick="closeModal()" class="w-full py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-sm font-medium transition-colors">
+                    Close Preview
+                </button>
+            `;
+
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+
+        function openImagePreview(src, alt) {
+            const modal = document.getElementById('imagePreviewModal');
+            const image = document.getElementById('imagePreview');
+            image.src = src;
+            image.alt = alt;
+            modal.classList.remove('hidden');
+        }
+
+        function closeImagePreview() {
+            const modal = document.getElementById('imagePreviewModal');
+            const image = document.getElementById('imagePreview');
+            modal.classList.add('hidden');
+            image.src = '';
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeImagePreview();
+                closeModal();
+            }
+        });
+
+        // Contact Form Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const formSuccess = document.getElementById('formSuccess');
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            const name = formData.get('name').trim();
+            const email = formData.get('email').trim();
+            const phone = formData.get('phone').trim() || 'Not provided';
+            const subject = formData.get('subject').trim();
+            const message = formData.get('message').trim();
+            const body = `Hello Augustine,\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject}\n\n${message}`;
+            const whatsappUrl = `https://wa.me/254712051504?text=${encodeURIComponent(body)}`;
+
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+            formSuccess.classList.remove('hidden');
+        }
+
+        function sendViaEmail() {
+            const form = document.getElementById('contactForm');
+            if (!form.reportValidity()) {
+                return;
+            }
+
+            const formData = new FormData(form);
+            const name = formData.get('name').trim();
+            const email = formData.get('email').trim();
+            const phone = formData.get('phone').trim() || 'Not provided';
+            const subject = formData.get('subject').trim();
+            const message = formData.get('message').trim();
+            const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`;
+            const mailto = `mailto:augustinemwanza86@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailto;
+            document.getElementById('formSuccess').classList.remove('hidden');
+        }
+
+        function getCVMarkup() {
+            return `
+                <style>
+                    :root { color: #1e293b; font-family: Arial, sans-serif; }
+                    * { box-sizing: border-box; }
+                    body { margin: 0; background: #e2e8f0; }
+                    .cv-page { max-width: 850px; margin: 0 auto; background: #fff; padding: 48px 56px; box-shadow: 0 8px 30px #0f172a20; }
+                    .cv-header { border-bottom: 4px solid #0284c7; padding-bottom: 22px; margin-bottom: 28px; }
+                    .cv-title { color: #0f172a; font-size: 34px; margin: 0 0 8px; letter-spacing: .5px; }
+                    .cv-role { color: #0369a1; font-size: 16px; font-weight: bold; margin: 0 0 14px; }
+                    .cv-contact { color: #475569; font-size: 13px; line-height: 1.7; }
+                    .cv-section-title { color: #0369a1; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid #cbd5e1; padding-bottom: 7px; margin: 26px 0 14px; }
+                    p, li { color: #334155; font-size: 14px; line-height: 1.65; }
+                    ul { margin: 8px 0 0; padding-left: 20px; }
+                    .cv-entry { margin-bottom: 16px; }
+                    .cv-entry strong { color: #0f172a; font-size: 15px; }
+                    .cv-meta { color: #64748b; font-size: 13px; margin-top: 3px; }
+                    .cv-skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 28px; }
+                    @media (max-width: 600px) {
+                        .cv-page { padding: 30px 24px; }
+                        .cv-skills { grid-template-columns: 1fr; }
+                    }
+                </style>
+                <main class="cv-page">
+                    <header class="cv-header">
+                        <h1 class="cv-title">Augustine Mwanza Pius</h1>
+                        <p class="cv-role">Applied Mathematician | Software Developer | Joinery Specialist</p>
+                        <div class="cv-contact">augustinemwanza86@gmail.com &nbsp;|&nbsp; 0712051504 &nbsp;|&nbsp; Nairobi, Kenya &nbsp;|&nbsp; GitHub &nbsp;|&nbsp; LinkedIn</div>
+                    </header>
+                    <section>
+                        <h2 class="cv-section-title">Professional Summary</h2>
+                        <p>Mathematics and modelling student combining analytical problem-solving, software development, and practical woodworking craftsmanship. Experienced in numerical methods, computer vision, space planning, and precision joinery.</p>
+                    </section>
+                    <section>
+                        <h2 class="cv-section-title">Education</h2>
+                        <div class="cv-entry">
+                            <strong>BSc Mathematics and Modelling Processes</strong>
+                            <div class="cv-meta">Dedan Kimathi University of Technology | 2024 - Present</div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2 class="cv-section-title">Experience</h2>
+                        <div class="cv-entry">
+                            <strong>Carpenter &amp; Joiner</strong>
+                            <div class="cv-meta">Timber World Limited, Nairobi</div>
+                            <ul><li>Built custom furniture and cabinetry using accurate measurements and high-quality joinery.</li><li>Applied layout planning and material optimization to reduce timber waste.</li></ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2 class="cv-section-title">Selected Projects</h2>
+                        <ul>
+                            <li><strong>Mathematical &amp; Numerical Modeling Suite:</strong> numerical methods and visualization tools using Python and Jupyter.</li>
+                            <li><strong>Space Planning &amp; Furniture Layout Visualizer:</strong> algorithmic layouts for efficient wood-sheet usage.</li>
+                            <li><strong>Image Processing &amp; Vision Analysis Tools:</strong> OpenCV tools for feature extraction and surface analysis.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="cv-section-title">Skills</h2>
+                        <div class="cv-skills">
+                            <p>Python, JavaScript, HTML5, CSS3</p>
+                            <p>Numerical Analysis &amp; Differential Equations</p>
+                            <p>OpenCV, NumPy, Jupyter</p>
+                            <p>Joinery, Furniture Making &amp; Space Planning</p>
+                        </div>
+                    </section>
+                </main>
+            `;
+        }
+
+        function getCVDocument() {
+            return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augustine Mwanza Pius - CV</title>
+    <style>
+        :root { color: #1e293b; font-family: Arial, sans-serif; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #e2e8f0; }
+        .page { max-width: 850px; margin: 32px auto; background: #fff; padding: 48px 56px; box-shadow: 0 8px 30px #0f172a20; }
+        header { border-bottom: 4px solid #0284c7; padding-bottom: 22px; margin-bottom: 28px; }
+        h1 { color: #0f172a; font-size: 34px; margin: 0 0 8px; letter-spacing: .5px; }
+        .role { color: #0369a1; font-size: 16px; font-weight: bold; margin: 0 0 14px; }
+        .contact { color: #475569; font-size: 13px; line-height: 1.7; }
+        h2 { color: #0369a1; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid #cbd5e1; padding-bottom: 7px; margin: 26px 0 14px; }
+        p, li { color: #334155; font-size: 14px; line-height: 1.65; }
+        ul { margin: 8px 0 0; padding-left: 20px; }
+        .entry { margin-bottom: 16px; }
+        .entry strong { color: #0f172a; font-size: 15px; }
+        .meta { color: #64748b; font-size: 13px; margin-top: 3px; }
+        .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 28px; }
+        @media print { body { background: #fff; } .page { margin: 0; box-shadow: none; max-width: none; } }
+        @media (max-width: 600px) { .page { margin: 0; padding: 30px 24px; } .skills { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <header>
+            <h1>Augustine Mwanza Pius</h1>
+            <p class="role">Applied Mathematician | Software Developer | Joinery Specialist</p>
+            <div class="contact">augustinemwanza86@gmail.com &nbsp;|&nbsp; 0712051504 &nbsp;|&nbsp; Nairobi, Kenya &nbsp;|&nbsp; GitHub &nbsp;|&nbsp; LinkedIn</div>
+        </header>
+        <section>
+            <h2>Professional Summary</h2>
+            <p>Mathematics and modelling student combining analytical problem-solving, software development, and practical woodworking craftsmanship. Experienced in numerical methods, computer vision, space planning, and precision joinery.</p>
+        </section>
+        <section>
+            <h2>Education</h2>
+            <div class="entry">
+                <strong>BSc Mathematics and Modelling Processes</strong>
+                <div class="meta">Dedan Kimathi University of Technology | 2024 - Present</div>
+            </div>
+        </section>
+        <section>
+            <h2>Experience</h2>
+            <div class="entry">
+                <strong>Carpenter &amp; Joiner</strong>
+                <div class="meta">Timber World Limited, Nairobi</div>
+                <ul><li>Built custom furniture and cabinetry using accurate measurements and high-quality joinery.</li><li>Applied layout planning and material optimization to reduce timber waste.</li></ul>
+            </div>
+        </section>
+        <section>
+            <h2>Selected Projects</h2>
+            <ul>
+                <li><strong>Mathematical &amp; Numerical Modeling Suite:</strong> numerical methods and visualization tools using Python and Jupyter.</li>
+                <li><strong>Space Planning &amp; Furniture Layout Visualizer:</strong> algorithmic layouts for efficient wood-sheet usage.</li>
+                <li><strong>Image Processing &amp; Vision Analysis Tools:</strong> OpenCV tools for feature extraction and surface analysis.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Skills</h2>
+            <div class="skills">
+                <p>Python, JavaScript, HTML5, CSS3</p>
+                <p>Numerical Analysis &amp; Differential Equations</p>
+                <p>OpenCV, NumPy, Jupyter</p>
+                <p>Joinery, Furniture Making &amp; Space Planning</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>`;
+        }
+
+        function viewCV() {
+            const modal = document.getElementById('cvModal');
+            const content = document.getElementById('cvContent');
+            if (modal && content) {
+                content.innerHTML = getCVMarkup();
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeCV() {
+            const modal = document.getElementById('cvModal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function downloadCV() {
+            const element = document.createElement('a');
+            const file = new Blob([getCVDocument()], {type: 'text/html'});
+            element.href = URL.createObjectURL(file);
+            element.download = "Augustine_Mwanza_Pius_CV.html";
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            URL.revokeObjectURL(element.href);
+        }
+
+        document.getElementById('closeCVModal')?.addEventListener('click', closeCV);
+        document.getElementById('cvModal')?.addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeCV();
+            }
+        });
+    </script>
+
+    <div id="cvModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm p-4">
+        <div class="mx-auto max-w-5xl h-full flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-lg font-semibold text-white">CV Preview</h3>
+                <button id="closeCVModal" class="rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/20 transition-colors">
+                    Close
+                </button>
+            </div>
+            <div id="cvContent" class="h-full overflow-auto rounded-xl bg-white shadow-2xl"></div>
+        </div>
+    </div>
+</body>
+</html>
