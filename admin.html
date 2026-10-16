@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Portfolio Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <main class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <header class="mb-8 flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-widest text-sky-400">Portfolio</p>
+        <h1 class="mt-1 text-3xl font-bold">Admin dashboard</h1>
+      </div>
+      <a href="index.html" class="rounded-lg border border-slate-700 px-4 py-2 text-sm hover:bg-slate-900">View portfolio</a>
+    </header>
+
+    <p id="notice" role="status" class="mb-5 hidden rounded-lg border px-4 py-3 text-sm"></p>
+
+    <section id="setupNotice" class="hidden rounded-2xl border border-amber-500/30 bg-amber-500/10 p-6">
+      <h2 class="text-lg font-semibold text-amber-200">Finish the Supabase setup</h2>
+      <p class="mt-2 text-sm leading-6 text-slate-300">Add your Supabase project URL and publishable key to <code>supabase-config.js</code>, run <code>supabase-schema.sql</code> in the Supabase SQL Editor, then follow <code>ADMIN_SETUP.md</code> to create and authorize the administrator account.</p>
+    </section>
+
+    <section id="loginPanel" class="hidden max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-xl">
+      <h2 class="text-xl font-semibold">Sign in</h2>
+      <p class="mt-1 text-sm text-slate-400">Use the administrator account configured in Supabase.</p>
+      <form id="loginForm" class="mt-6 space-y-4">
+        <label class="block text-sm">Email<input id="email" type="email" autocomplete="username" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-white"></label>
+        <label class="block text-sm">Password<input id="password" type="password" autocomplete="current-password" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-white"></label>
+        <button class="w-full rounded-lg bg-sky-600 px-4 py-2.5 font-semibold hover:bg-sky-500">Sign in</button>
+      </form>
+    </section>
+
+    <section id="deniedPanel" class="hidden rounded-2xl border border-rose-500/30 bg-rose-500/10 p-6">
+      <h2 class="text-lg font-semibold text-rose-200">Administrator access required</h2>
+      <p class="mt-2 text-sm text-slate-300">This account is not assigned the admin role. Ask the project owner to configure its trusted app metadata in Supabase.</p>
+      <button id="signOutDenied" class="mt-4 rounded-lg border border-slate-700 px-4 py-2 text-sm hover:bg-slate-900">Sign out</button>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-800 bg-slate-900 px-4 py-3">
+        <p class="text-sm text-slate-300">Signed in as <span id="userEmail" class="font-medium text-white"></span></p>
+        <button id="signOut" class="rounded-lg border border-slate-700 px-3 py-2 text-sm hover:bg-slate-800">Sign out</button>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
+        <section class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+          <div class="mb-4 flex items-center justify-between gap-3">
+            <h2 class="text-xl font-semibold">Projects</h2>
+            <button id="newProject" class="rounded-lg bg-sky-600 px-3 py-2 text-sm font-semibold hover:bg-sky-500">Add project</button>
+          </div>
+          <div id="projectList" class="space-y-3"></div>
+        </section>
+        <section class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+          <h2 id="formHeading" class="text-xl font-semibold">Add a project</h2>
+          <form id="projectForm" class="mt-4 space-y-3">
+            <input id="projectId" type="hidden">
+            <label class="block text-sm">Title<input id="projectTitle" required maxlength="120" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"></label>
+            <label class="block text-sm">Description<textarea id="projectDescription" required rows="4" maxlength="800" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"></textarea></label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="block text-sm">Category<select id="projectCategory" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"><option value="math">Math & Modeling</option><option value="woodwork">Joinery & Woodwork</option><option value="vision">Computer Vision & Software</option><option value="creative">Creative Work</option></select></label>
+              <label class="block text-sm">Icon class<input id="projectIcon" value="fa-code" maxlength="50" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"></label>
+            </div>
+            <label class="block text-sm">Image path or URL (optional)<input id="projectImage" maxlength="500" placeholder="images/project.jpg" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"></label>
+            <label class="block text-sm">Project link (optional)<input id="projectUrl" type="url" maxlength="500" placeholder="https://github.com/..." class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"></label>
+            <label class="block text-sm">Tags, comma separated<input id="projectTags" maxlength="300" placeholder="Python, Jupyter" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"></label>
+            <label class="flex items-center gap-2 text-sm"><input id="projectPublished" type="checkbox" checked class="accent-sky-500">Published on the public portfolio</label>
+            <div class="flex gap-3 pt-2"><button class="rounded-lg bg-sky-600 px-4 py-2 font-semibold hover:bg-sky-500">Save project</button><button id="cancelEdit" type="button" class="hidden rounded-lg border border-slate-700 px-4 py-2">Cancel</button></div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const configured = window.PORTFOLIO_SUPABASE_URL && !window.PORTFOLIO_SUPABASE_URL.includes('YOUR_PROJECT') && window.PORTFOLIO_SUPABASE_PUBLISHABLE_KEY && !window.PORTFOLIO_SUPABASE_PUBLISHABLE_KEY.includes('YOUR_');
+      const byId = (id) => document.getElementById(id);
+      const panels = ['setupNotice', 'loginPanel', 'deniedPanel', 'dashboard'];
+      const show = (panel) => panels.forEach((id) => byId(id).classList.toggle('hidden', id !== panel));
+      const notify = (message, error = false) => {
+        const el = byId('notice');
+        el.textContent = message;
+        el.className = `mb-5 rounded-lg border px-4 py-3 text-sm ${error ? 'border-rose-500/40 bg-rose-500/10 text-rose-200' : 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200'}`;
+      };
+      if (!configured || !window.supabase) { show('setupNotice'); return; }
+      const db = window.supabase.createClient(window.PORTFOLIO_SUPABASE_URL, window.PORTFOLIO_SUPABASE_PUBLISHABLE_KEY);
+      let projects = [];
+      const categoryLabels = { math: 'Math & Modeling', woodwork: 'Joinery & Woodwork', vision: 'Computer Vision & Software', creative: 'Creative Work' };
+      const safe = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      async function refresh() {
+        const { data, error } = await db.from('portfolio_projects').select('*').order('sort_order').order('created_at');
+        if (error) { notify(error.message, true); return; }
+        projects = data || [];
+        byId('projectList').innerHTML = projects.map((p) => `<article class="flex items-start justify-between gap-3 rounded-xl border border-slate-800 p-3"><div><h3 class="font-medium">${safe(p.title)}</h3><p class="mt-1 text-xs text-slate-400">${safe(categoryLabels[p.category] || p.category_label)} · ${p.published ? 'Published' : 'Hidden'}</p></div><div class="flex shrink-0 gap-2"><button data-edit="${p.id}" class="rounded-md border border-slate-700 px-2.5 py-1.5 text-xs hover:bg-slate-800">Edit</button><button data-delete="${p.id}" class="rounded-md border border-rose-900 px-2.5 py-1.5 text-xs text-rose-300 hover:bg-rose-950">Delete</button></div></article>`).join('') || '<p class="text-sm text-slate-400">No projects yet. Add your first project.</p>';
+      }
+      function clearForm() {
+        byId('projectForm').reset(); byId('projectId').value = ''; byId('projectIcon').value = 'fa-code'; byId('projectPublished').checked = true;
+        byId('formHeading').textContent = 'Add a project'; byId('cancelEdit').classList.add('hidden');
+      }
+      function editProject(p) {
+        byId('projectId').value = p.id; byId('projectTitle').value = p.title; byId('projectDescription').value = p.description;
+        byId('projectCategory').value = p.category; byId('projectIcon').value = p.icon || 'fa-code'; byId('projectImage').value = p.image_url || '';
+        byId('projectUrl').value = p.project_url || ''; byId('projectTags').value = (p.tags || []).join(', '); byId('projectPublished').checked = p.published;
+        byId('formHeading').textContent = 'Edit project'; byId('cancelEdit').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      async function showUser(session) {
+        if (!session) { show('loginPanel'); return; }
+        if (session.user.app_metadata?.role !== 'admin') { show('deniedPanel'); return; }
+        byId('userEmail').textContent = session.user.email || 'Administrator'; show('dashboard'); await refresh();
+      }
+      byId('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const { data, error } = await db.auth.signInWithPassword({ email: byId('email').value, password: byId('password').value });
+        if (error) { notify(error.message, true); return; }
+        if (data.session?.user.app_metadata?.role !== 'admin') { await db.auth.signOut(); show('deniedPanel'); return; }
+        notify('Signed in successfully.'); await showUser(data.session);
+      });
+      async function signOut() { await db.auth.signOut(); clearForm(); show('loginPanel'); }
+      byId('signOut').addEventListener('click', signOut); byId('signOutDenied').addEventListener('click', signOut);
+      byId('newProject').addEventListener('click', clearForm); byId('cancelEdit').addEventListener('click', clearForm);
+      byId('projectList').addEventListener('click', async (event) => {
+        const editId = event.target.dataset.edit; const deleteId = event.target.dataset.delete;
+        if (editId) { const project = projects.find((p) => p.id === editId); if (project) editProject(project); }
+        if (deleteId && window.confirm('Delete this project? This cannot be undone.')) {
+          const { error } = await db.from('portfolio_projects').delete().eq('id', deleteId);
+          if (error) notify(error.message, true); else { notify('Project deleted.'); await refresh(); }
+        }
+      });
+      byId('projectForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const category = byId('projectCategory').value;
+        const record = { title: byId('projectTitle').value.trim(), description: byId('projectDescription').value.trim(), category, category_label: categoryLabels[category], icon: byId('projectIcon').value.trim() || 'fa-code', image_url: byId('projectImage').value.trim() || null, project_url: byId('projectUrl').value.trim() || null, tags: byId('projectTags').value.split(',').map((tag) => tag.trim()).filter(Boolean), published: byId('projectPublished').checked };
+        const id = byId('projectId').value;
+        const result = id ? await db.from('portfolio_projects').update(record).eq('id', id) : await db.from('portfolio_projects').insert(record);
+        if (result.error) { notify(result.error.message, true); return; }
+        notify('Project saved.'); clearForm(); await refresh();
+      });
+      db.auth.getSession().then(({ data }) => showUser(data.session));
+      db.auth.onAuthStateChange((_event, session) => {
+        if (!session) { show('loginPanel'); return; }
+        if (session.user.app_metadata?.role !== 'admin') { show('deniedPanel'); return; }
+        byId('userEmail').textContent = session.user.email || 'Administrator';
+        show('dashboard');
+        queueMicrotask(() => refresh());
+      });
+    })();
+  </script>
+</body>
+</html>

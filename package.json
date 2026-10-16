@@ -2,8 +2,13 @@
   "name": "augustine-mwanza-portfolio",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Personal portfolio website",
   "scripts": {
-    "start": "npx serve ."
+    "start": "npx serve .",
+    "set-admin-role": "node scripts/set-admin-role.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.0.0"
   }
 }
